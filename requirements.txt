@@ -1,0 +1,7 @@
+streamlit
+pandas
+requests
+matplotlib
+beautifulsoup4
+geopandas
+
