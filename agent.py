@@ -4,7 +4,6 @@ from langchain.tools import tool
 from langchain.agents import create_agent
 from langchain.agents.middleware import PIIMiddleware
 from langchain_ollama import ChatOllama
-from langchain_core.utils.uuid import uuid7
 from main import df 
 load_dotenv()
 
@@ -17,7 +16,7 @@ ollama_model = ChatOllama(
 
 @tool
 def geo_gen():
-    """Dataset containg different countries"""
+    """Dataset containing different countries"""
     return df['country']
     
 
@@ -35,7 +34,7 @@ df_agent = create_agent(
 
 
 response = df_agent.invoke(
-    {"messages":[{"role": "user", "content": "Return a dictionary of latitude and longitude coordinates for each country"}]},
-    config = config)
+    {"messages":[{"role": "user", "content": "Return a dictionary of latitude and longitude coordinates for each country for all rows in the dataset"}]}
+    )
 
 print(response["messages"][-1].content)
